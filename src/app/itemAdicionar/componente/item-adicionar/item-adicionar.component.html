@@ -1,0 +1,31 @@
+<div class="container">
+<mat-toolbar class="titulo">Cadastrar novo item</mat-toolbar>
+<form class="formulario" *ngIf="formCadastro" [formGroup]="formCadastro" (ngSubmit)="salvar()">
+    <!-- <span>- Form Normal -</span>
+    <label>
+      Nome:
+    <input type="text" formControlName="nome" maxlength="10">
+    </label>
+    <br>
+    <span *ngIf="formCadastro.get('nome')?.errors && (formCadastro.get('nome')?.dirty && formCadastro.get('nome')?.touched)">
+      Campo Nome obrigatorio! 
+    </span> -->
+    <!-- <span>- Form angular Material -</span> -->
+    <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <!-- auto complete off desativa auto preenchimento de dados salvos em memoria browser -->
+        <!-- adicionando required no html ele acrescenta o * na frente do campo -->
+        <input matInput placeholder="Digite o nome" type="text" formControlName="nome" maxlength="20" required autocomplete="off">
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+        <mat-icon matSuffix *ngIf="formCadastro.get('nome')?.errors && (formCadastro.get('nome')?.dirty && formCadastro.get('nome')?.touched)">sentiment_very_dissatisfied</mat-icon> 
+        <mat-hint *ngIf="formCadastro.get('nome')?.errors && (formCadastro.get('nome')?.dirty && formCadastro.get('nome')?.touched)">
+            Campo Nome obrigatorio!
+        </mat-hint> 
+        <!-- <mat-error>Campo é obrigatorio! Mat-error</mat-error> -->
+    </mat-form-field>
+    <div class="buttonsEscolha">
+        <button class="buttonsEscolha" type="button" mat-raised-button color="accent" routerLink="/items">CANCELAR</button>
+        <button class="buttonsEscolha" type="button" mat-raised-button color="primary" [disabled]="!formCadastro.valid" (click)="salvar()">SALVAR</button>
+    </div>
+</form>    
+</div>

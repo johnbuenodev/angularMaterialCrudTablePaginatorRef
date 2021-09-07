@@ -1,0 +1,17 @@
+<div class="container">
+    <mat-toolbar class="titulo">Editar item</mat-toolbar>
+    <form class="formulario" *ngIf="formCadastro" [formGroup]="formCadastro" (ngSubmit)="editar()">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Digite o nome" type="text" formControlName="nome" maxlength="20" required autocomplete="off">
+            <mat-icon matSuffix *ngIf="formCadastro.get('nome')?.errors && (formCadastro.get('nome')?.dirty && formCadastro.get('nome')?.touched)">sentiment_very_dissatisfied</mat-icon> 
+            <mat-hint *ngIf="formCadastro.get('nome')?.errors && (formCadastro.get('nome')?.dirty && formCadastro.get('nome')?.touched)">
+                Campo Nome obrigatorio!
+            </mat-hint> 
+        </mat-form-field>
+        <div class="buttonsEscolha">
+            <button class="buttonsEscolha" type="button" mat-raised-button color="accent" routerLink="/items">CANCELAR</button>
+            <button class="buttonsEscolha" type="button" mat-raised-button color="primary" [disabled]="!formCadastro.valid" (click)="editar()">SALVAR</button>
+        </div>
+    </form>    
+</div>

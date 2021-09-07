@@ -1,0 +1,59 @@
+<mat-toolbar class="titulo">Lista de items</mat-toolbar>
+
+<!--
+<ul *ngIf="itemList; else carregandodados">
+    <li *ngFor="let item of itemList" >
+        {{item.nome}}
+    </li>
+</ul> -->
+
+<!--  funcionando com objeto Observable | async
+    <div class="container" *ngIf="itemList$ | async as itens; else carregandodados">
+            <table  mat-table [dataSource]="itens" class="mat-elevation-z8">
+-->
+
+<button class="button-container" mat-raised-button color="primary" (click)="novoItem()">Novo Item</button>
+<div class="container" *ngIf="itemList$ | async as itens; else carregandodados">
+            <table  mat-table [dataSource]="itens" class="mat-elevation-z8">
+                
+                <!-- id Column -->
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef> ID </th>
+                  <td mat-cell *matCellDef="let item"> {{item.id}} </td>
+                </ng-container>
+            
+                <!-- nome Column -->
+                <ng-container matColumnDef="nome">
+                  <th mat-header-cell *matHeaderCellDef> Nome </th>
+                  <td mat-cell *matCellDef="let item"> {{item.nome}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Editar" style="justify-content: space-around;">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let item" >
+                         <button style="margin: 0.5rem;" mat-raised-button color="primary" (click)="editarRegistro(item.id)">Editar</button> 
+                         <button style="margin: 0.5rem;" mat-raised-button color="accent" (click)="deletarRegistro(item.id)">Deletar</button> 
+                    </td>
+                </ng-container> 
+                <!--
+                <ng-container matColumnDef="Deletar">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let item" >
+                         <button mat-raised-button color="primary" (click)="deletarRegistro(item.id)">Deletar</button> 
+                    </td>
+                </ng-container>  -->
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <!-- (click)="selecionaRegistro(row)" -->
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+            </table>
+            <br>
+            <mat-paginator MatPaginator  [pageSize]="pageVariable" [pageSizeOptions]="optionsVariable"
+            showFirstLastButtons 
+            aria-label="Select page of itens">
+            </mat-paginator>   
+</div>
+
+<ng-template #carregandodados class="container">
+    <mat-spinner class="progresso"></mat-spinner>
+</ng-template>

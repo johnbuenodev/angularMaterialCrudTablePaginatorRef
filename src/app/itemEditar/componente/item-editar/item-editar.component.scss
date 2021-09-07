@@ -1,0 +1,21 @@
+.container{
+    width: 95%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    //hack para visualizar os elementos na tela *{ border: solid 1px red; }
+    //*{ border: solid 1px red; }
+}
+
+.formulario {
+    width: 100%;
+    margin: 1rem;
+}
+
+.buttonsDiv{
+    margin:1rem;
+}
+
+.buttonsEscolha{
+    margin-right:0.8rem;
+}

@@ -1,0 +1,43 @@
+.container{
+    width: 95%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    //hack para visualizar os elementos na tela *{ border: solid 1px red; }
+}
+
+table {
+    width: 100%;
+    margin: 1rem;
+}
+
+.button-container{
+    margin-left: 1rem;
+    margin-bottom: 0rem;
+    margin-top: 1rem;
+    justify-content: start;
+}
+
+mat-paginator{
+    width: 100%;
+    margin: 1rem;
+}
+
+.titulo{
+    text-align: start;
+    justify-content: start;
+    color: rgb(43, 46, 43);
+    margin-top: 1rem;
+    padding-left: 1rem;
+    font-weight: 500;
+}
+  
+.espacamento{
+  padding-bottom: 2rem;
+}
+
+.progresso{
+
+    justify-content: center;
+    margin: 1rem;
+}
